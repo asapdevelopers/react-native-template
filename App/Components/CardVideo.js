@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./Styles/CardVideoStyle";
 import Images from "../Themes/Images";
+import { Card, Subtitle, Caption, Image } from "@shoutem/ui";
 
 export default class CardVideo extends Component {
   static propTypes = {
@@ -23,24 +24,17 @@ export default class CardVideo extends Component {
     const { thumbnail, title, channelName, description } = this.props;
 
     return (
-      <View style={styles.cardContainer}>
+      <View>
         <View>
-          <TouchableOpacity>
-            <Image source={thumbnail} style={styles.cardCover} />
-            <Image source={Images.play} style={styles.playCover} />
-          </TouchableOpacity>
+          <Image resizeMode="contain"
+            style={{ height: 200}}
+            source={thumbnail}
+          />
         </View>
-        <View style={styles.divider}></View>
-        <View>
-          <Text>{title}</Text>
-        </View>
-        <View>
-          <View>
-            <Text>{channelName}</Text>
-            <View>
-              <Text>{description}</Text>
-            </View>
-          </View>
+        <View style={styles.cardContent}>
+          <Text style={styles.channelName}>{channelName}</Text>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.subtitle}>{description}</Text>
         </View>
       </View>
     );

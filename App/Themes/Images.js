@@ -20,8 +20,10 @@ const images = {
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
+  close: require('../Images/Icons/close.png'),
   youtubeLogo : require('../Images/youtube-logo.png'),
   play: require('../Images/play.png'),
+  search: require("../Images/search.png")
 }
 
 export default images

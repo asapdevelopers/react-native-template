@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
-import CardVideo from '../Components/CardVideo';
+import CardVideo from "../Components/CardVideo";
+import { NavigationBar, Button } from "@shoutem/ui";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Header from '../Components/Header';
 // Styles
 import styles from "./Styles/VideosStyle";
 
@@ -35,6 +38,7 @@ class VideosScreen extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
+        <Header />
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.state.dataObjects}

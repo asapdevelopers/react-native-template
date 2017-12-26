@@ -9,7 +9,8 @@ export default StyleSheet.create({
     flexDirection: 'column'
   },
   cardCover: {
-    height: 180,
+    height: 360,
+    width:480,
     resizeMode: 'contain',
     position: "relative"
   },
@@ -24,5 +25,17 @@ export default StyleSheet.create({
     marginTop:3,
     marginBottom:3,
     backgroundColor: Colors.facebook
+  },
+  channelName:{
+    fontSize:11,
+    color: Colors.gray
+  },
+  title:{
+    color: Colors.darkGray,
+    fontSize: 11
+  },
+  subtitle:{
+    color: Colors.darkGray,
+    fontSize:11
   }
 });
