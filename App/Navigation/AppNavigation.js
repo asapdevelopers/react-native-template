@@ -1,7 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 import VideosScreen from '../Containers/VideosScreen'
 import LaunchScreen from '../Containers/LaunchScreen';
-
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
