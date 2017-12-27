@@ -1,30 +1,23 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { View, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
 import CardVideo from "../Components/CardVideo";
 import { NavigationBar, Button } from "@shoutem/ui";
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Header from '../Components/Header';
+import Icon from "react-native-vector-icons/FontAwesome";
+import Header from "../Components/Header";
+import * as VideoActions from "../Store/actions/videos";
 // Styles
 import styles from "./Styles/VideosStyle";
 
 class VideosScreen extends React.PureComponent {
-  /************************************************************
-   * STEP 1
-   * This is an array of objects with the properties you desire
-   * Usually this should come from Redux mapStateToProps
-   *************************************************************/
-  state = {
-    dataObjects: [
-      { title: "First Title", description: "First Description" },
-      { title: "Second Title", description: "Second Description" },
-      { title: "Third Title", description: "Third Description" },
-      { title: "Fourth Title", description: "Fourth Description" },
-      { title: "Fifth Title", description: "Fifth Description" },
-      { title: "Sixth Title", description: "Sixth Description" },
-      { title: "Seventh Title", description: "Seventh Description" }
-    ]
-  };
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+    this.props.videoActions.list("React");
+  }
 
   renderRow({ item }) {
     return (
@@ -33,32 +26,35 @@ class VideosScreen extends React.PureComponent {
       </View>
     );
   }
+
   keyExtractor = (item, index) => index;
 
   render() {
+    const { videos } = this.props;
     return (
       <View style={styles.container}>
         <Header />
-        <FlatList
-          contentContainerStyle={styles.listContent}
-          data={this.state.dataObjects}
-          renderItem={this.renderRow}
-          keyExtractor={this.keyExtractor}
-          initialNumToRender={10}
-        />
+        {videos.length != 0 && (
+          <FlatList
+            contentContainerStyle={styles.listContent}
+            data={videos}
+            renderItem={this.renderRow}
+            keyExtractor={this.keyExtractor}
+            initialNumToRender={10}
+          />
+        )}
       </View>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    // ...redux state to props here
-  };
-};
+const mapStateToProps = state => ({
+  videos: state.videos,
+  loading: state.loading
+});
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
+// wraps dispatch to create nicer functions to call within our component
+const mapDispatchToProps = dispatch => ({
+  videoActions: bindActionCreators(VideoActions, dispatch)
+});
 export default connect(mapStateToProps, mapDispatchToProps)(VideosScreen);

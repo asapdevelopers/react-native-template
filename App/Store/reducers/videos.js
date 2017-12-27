@@ -1,22 +1,23 @@
 import * as videoActions from "../actions/videos";
+import * as consts from "../actions/constants";
 
 function videosReducer(state = [], { type, payload }) {
   switch (type) {
-    case videoActions.videoConsts.VIDEO_LOADING: {
+    case consts.video.VIDEO_LOADING: {
       return {
         ...state,
         loading: true
       };
     }
 
-    case videoActions.videoConsts.VIDEO_GET_LIST_SUCCESS: {
+    case consts.video.VIDEO_GET_LIST_SUCCESS: {
       return {
         ...state,
-        videos: payload,
+        results: payload,
         loading: false
       };
     }
-    case videoActions.videoConsts.VIDEO_GET_LIST_FAILURE: {
+    case consts.video.VIDEO_GET_LIST_FAILURE: {
       return {
         ...state,
         loading: false

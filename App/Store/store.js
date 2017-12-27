@@ -32,7 +32,10 @@ const createAppropriateStore = Config.useReactotron
   : createStore;
 
 var defaultState = {
-  videos: []
+  videos: {
+    results: [],
+    loading:false
+  }
 };
 
 storage
