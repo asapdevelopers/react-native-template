@@ -9,3 +9,7 @@ export const loading = value => ({
   type: consts.video.VIDEO_LOADING,
   payload: { value }
 });
+
+export const clear = () => ({
+  type: consts.video.VIDEO_CLEAR_LIST
+});

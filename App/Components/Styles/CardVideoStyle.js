@@ -9,15 +9,10 @@ export default StyleSheet.create({
     flexDirection: 'column'
   },
   cardCover: {
-    height: 360,
-    width:480,
-    resizeMode: 'contain',
-    position: "relative"
+    height: 200
   },
-  playCover: {
-    height: 60,
-    width: 60,
-    position: "absolute",
+  cardContent:{
+    padding:15
   },
   divider:{
     flex:1,
@@ -28,14 +23,16 @@ export default StyleSheet.create({
   },
   channelName:{
     fontSize:11,
-    color: Colors.gray
+    color: Colors.gray,
+    marginBottom:3
   },
   title:{
     color: Colors.darkGray,
-    fontSize: 11
+    fontSize: 12,
+    marginBottom:5
   },
   subtitle:{
     color: Colors.darkGray,
-    fontSize:11
+    fontSize:12
   }
 });

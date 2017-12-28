@@ -13,7 +13,7 @@ function videosReducer(state = [], { type, payload }) {
     case consts.video.VIDEO_GET_LIST_SUCCESS: {
       return {
         ...state,
-        results: payload,
+        results: payload.items,
         loading: false
       };
     }
@@ -21,6 +21,12 @@ function videosReducer(state = [], { type, payload }) {
       return {
         ...state,
         loading: false
+      };
+    }
+    case consts.video.VIDEO_CLEAR_LIST: {
+      return {
+        ...state,
+        results:[]
       };
     }
     default:

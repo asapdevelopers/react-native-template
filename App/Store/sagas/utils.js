@@ -24,7 +24,6 @@ function fetch2(url, options) {
   if (options.params) {
     url = `${url}?${queryParams(options.params)}`;
   }
-  debugger;
   return fetch(url, addCommonHeaders(options));
 }
 
@@ -58,7 +57,6 @@ export const fetchJSON = (url, options = {}) => {
 };
 
 export const handleError = status => {
-  debugger;
   let message = "";
   switch (status) {
     case 500:

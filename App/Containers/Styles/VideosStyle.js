@@ -24,6 +24,11 @@ export default StyleSheet.create({
     textAlign: "center",
     marginBottom: Metrics.smallMargin
   },
+  noVideos:{
+    fontSize:18,
+    marginTop:20,
+    textAlign:"center"
+  },
   label: {
     textAlign: "center",
     color: Colors.snow
@@ -31,5 +36,8 @@ export default StyleSheet.create({
   listContent: {
     zIndex: 1,
     padding: Metrics.baseMargin
+  },
+  indicator:{
+    marginTop:50
   }
 });

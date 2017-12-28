@@ -26,9 +26,9 @@ export default class CardVideo extends Component {
     return (
       <View>
         <View>
-          <Image resizeMode="contain"
+          <Image resizeMode="cover"
             style={{ height: 200}}
-            source={thumbnail}
+            source={{uri: thumbnail}}
           />
         </View>
         <View style={styles.cardContent}>

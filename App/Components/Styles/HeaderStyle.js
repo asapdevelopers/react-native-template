@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import Fonts from "../../Themes/Fonts";
 import Metrics from "../../Themes/Metrics";
 import Colors from "../../Themes/Colors";
@@ -8,10 +8,13 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: "row"
   },
+  title:{
+    fontSize:18
+  },
   headerContainer: {
     borderWidth: 1,
     backgroundColor: Colors.snow,
-    marginTop: 22,
+    marginTop: Platform.OS === "ios" ? 22 : 0,
     height: Metrics.navBarHeight,
     borderBottomColor: Colors.transparent,
     borderTopColor: Colors.transparent,

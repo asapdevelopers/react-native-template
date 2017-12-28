@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import Images from "../Themes/Images";
 import styles from "./Styles/HeaderStyle";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default class Header extends Component {
   constructor(props) {
@@ -12,6 +13,17 @@ export default class Header extends Component {
       searchInput: ""
     };
   }
+
+  startSearching = () => {
+    this.props.onSearch();
+    this.setState({ search: true });
+  };
+
+  search = () => {
+    this.props.search(this.state.searchInput);
+    this.setState({ search: false });
+    this.setState({ searchInput: '' });
+  };
 
   render() {
     const { search, searchInput } = this.state;
@@ -26,6 +38,8 @@ export default class Header extends Component {
         <TextInput
           value={searchInput}
           style={styles.searchInput}
+          returnKeyType="search"
+          onSubmitEditing={this.search}
           placeholder="Search video"
           onChangeText={text => this.setState({ searchInput: text })}
           underlineColorAndroid="transparent"
@@ -36,11 +50,15 @@ export default class Header extends Component {
 
     const normalState = (
       <View style={styles.searchContainer}>
-        <View />
-        <Text>Videos</Text>
         <View style={styles.closeContainer}>
           <TouchableOpacity onPress={() => this.setState({ search: true })}>
-            <Image source={Images.search} style={{ width: 15, height: 15 }} />
+            <Icon name="bars" size={20} color="black" />
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.title}>Videos</Text>
+        <View style={styles.closeContainer}>
+          <TouchableOpacity onPress={() => this.startSearching()}>
+            <Icon name="search" size={20} color="black" />
           </TouchableOpacity>
         </View>
       </View>
