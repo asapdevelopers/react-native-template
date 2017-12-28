@@ -1,7 +1,7 @@
 #  React native template
 This project is a template for React-native and includes a bridge for Android and iOS to use the native [JWPlayer SDks](https://www.jwplayer.com/video-solutions/mobile-sdk/) with React
 
-![Image of RNTemplate](https://i.imgur.com/T6teKO8.png)
+![Image of RNTemplate](https://i.imgur.com/LsRSauX.png)
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
