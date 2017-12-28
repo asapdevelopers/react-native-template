@@ -10,6 +10,11 @@ export default StyleSheet.create({
   header: {
     position: "relative"
   },
+  video:{
+    flex:1,
+    height: 250,
+    width: Metrics.screenWidth
+  },
   row: {
     flex: 1,
     backgroundColor: Colors.snow,

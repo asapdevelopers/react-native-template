@@ -1,0 +1,61 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'reactNativeTemplate' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for reactNativeTemplate
+
+  pod 'JWPlayer-SDK', '~> 2.7.9'
+  rn_path = '../node_modules/react-native'
+  pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
+  pod 'React', path: rn_path, subspecs: [
+  'Core',
+  'ART',
+  'RCTActionSheet',
+  'RCTAnimation',
+  'RCTCameraRoll',
+  'RCTGeolocation',
+  'RCTImage',
+  'RCTLinkingIOS',
+  'RCTNetwork',
+  'RCTSettings',
+  'RCTText',
+  'RCTVibration',
+  'RCTWebSocket',
+  'DevSupport',
+  'CxxBridge',
+  'BatchedBridge'
+  ]
+
+  pod 'DoubleConversion',
+    :podspec => "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec",
+    :inhibit_warnings => true
+  pod 'Folly',
+    :podspec => "../node_modules/react-native/third-party-podspecs/Folly.podspec",
+    :inhibit_warnings => true
+  pod 'GLog',
+    :podspec => "../node_modules/react-native/third-party-podspecs/GLog.podspec",
+    :inhibit_warnings => true
+
+  post_install do |installer|
+    installer.pods_project.main_group.tab_width = '2';
+    installer.pods_project.main_group.indent_width = '2';
+
+    installer.pod_targets.each do |target|
+
+      if target.name == "React"
+        #target.remove_from_project
+      end
+
+      # Build React Native with RCT_DEV enabled
+      next unless target.pod_name == 'React'
+      target.native_target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_DEV=1'
+      end
+
+    end
+  end
+end

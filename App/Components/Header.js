@@ -51,7 +51,7 @@ export default class Header extends Component {
     const normalState = (
       <View style={styles.searchContainer}>
         <View style={styles.closeContainer}>
-          <TouchableOpacity onPress={() => this.setState({ search: true })}>
+          <TouchableOpacity>
             <Icon name="bars" size={20} color="black" />
           </TouchableOpacity>
         </View>

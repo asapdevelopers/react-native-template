@@ -29,10 +29,12 @@ export default StyleSheet.create({
   title:{
     color: Colors.darkGray,
     fontSize: 12,
+    fontWeight: "bold",
     marginBottom:5
   },
   subtitle:{
     color: Colors.darkGray,
-    fontSize:12
+    fontSize:12,
+    color: Colors.gray
   }
 });

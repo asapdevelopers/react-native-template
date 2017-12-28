@@ -8,6 +8,8 @@ import { NavigationBar, Button } from "@shoutem/ui";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Header from "../Components/Header";
 import * as VideoActions from "../Store/actions/videos";
+import JWPlayerBridgeView from "../NativeBridges/JWPlayerBridgeNativeView";
+
 // Styles
 import styles from "./Styles/VideosStyle";
 
@@ -16,13 +18,13 @@ class VideosScreen extends React.PureComponent {
     super();
   }
 
-  componentDidMount() {
-    this.props.videoActions.list("React");
-  }
+  goToVideoScreen = video => {
+
+  };
 
   renderRow({ item }) {
     return (
-      <View style={styles.row}>
+      <View style={styles.row} onPress={() => this.goToVideoScreen(item)}>
         <CardVideo
           title={item.snippet.title}
           channelName={item.snippet.channelTitle}
@@ -41,8 +43,9 @@ class VideosScreen extends React.PureComponent {
       <View style={styles.container}>
         <Header onSearch={videoActions.clear} search={videoActions.list} />
         {videos.loading && (
-          <ActivityIndicator style={styles.indicator} size={50} />
+          <ActivityIndicator style={styles.indicator} size="large" />
         )}
+
         {videos.results.length != 0 && (
           <FlatList
             contentContainerStyle={styles.listContent}
@@ -52,7 +55,9 @@ class VideosScreen extends React.PureComponent {
             initialNumToRender={10}
           />
         )}
-        {videos.results.length == 0 && <Text style={styles.noVideos}>{I18n.t("no_videos")}</Text>}
+        {videos.results.length == 0 && (
+          <Text style={styles.noVideos}>{I18n.t("no_videos")}</Text>
+        )}
       </View>
     );
   }
