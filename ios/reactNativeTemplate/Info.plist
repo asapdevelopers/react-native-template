@@ -40,7 +40,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>JWPlayerKey</key>
-	<string>09brzmN229YzBrie1Ln3Q+bGa8P1Use7opCaFg==</string>
+	<string>JWPlayerkey</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
