@@ -2,15 +2,30 @@
 
 package com.reactnativetemplate.jwplayerbridge;
 
+
 import android.view.View;
 
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.longtailvideo.jwplayer.configuration.PlayerConfig;
+import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
 
-public class JWPlayerBridgeManager extends SimpleViewManager<View> {
+public class JWPlayerBridgeManager extends SimpleViewManager<AsapJWPlayer> {
+
     public static final String REACT_CLASS = "JWPlayerBridge";
+
+    private PlayerConfig playerConfig;
+    private ThemedReactContext mContext;
+    AsapJWPlayer playerView = null;
+    PlaylistItem pi = null;
+
+    //Props
+    String src = "";
+    String poster = "";
+    String title = "";
+    String description = "";
 
     @Override
     public String getName() {
@@ -20,15 +35,81 @@ public class JWPlayerBridgeManager extends SimpleViewManager<View> {
     }
 
     @Override
-    public View createViewInstance(ThemedReactContext context){
-        // Create a view here
-        // https://facebook.github.io/react-native/docs/native-components-android.html#2-implement-method-createviewinstance
-        return new View(context);
+    public AsapJWPlayer createViewInstance(ThemedReactContext context) {
+
+        mContext = context;
+        playerConfig = new PlayerConfig.Builder()
+                //.autostart(true)
+                .build();
+
+        playerView = new AsapJWPlayer(mContext.getCurrentActivity(), playerConfig);
+        return playerView;
     }
 
-    @ReactProp(name = "exampleProp")
-    public void setExampleProp(View view, String prop) {
-        // Set properties from React onto your native component via a setter method
-        // https://facebook.github.io/react-native/docs/native-components-android.html#3-expose-view-property-setters-using-reactprop-or-reactpropgroup-annotation
+    @ReactProp(name = "src")
+    public void setSrc(View view, String prop) {
+        if (src!=prop) {
+            src = prop;
+            playerView.stop();
+            pi = new PlaylistItem.Builder()
+                    .file(src)
+                    .title(title)
+                    .description(description)
+                    .image(poster)
+
+                    .build();
+            playerView.load(pi);
+
+        }
     }
+
+    @ReactProp(name = "poster")
+    public void setPoster(View view, String prop) {
+        if(poster!=prop) {
+            poster = prop;
+            playerView.stop();
+            pi = new PlaylistItem.Builder()
+                    .file(src)
+                    .title(title)
+                    .description(description)
+                    .image(poster)
+                    .build();
+
+            playerView.load(pi);
+        }
+    }
+
+    @ReactProp(name = "title")
+    public void setTitle(View view, String prop) {
+        if(title!=prop) {
+            title = prop;
+            playerView.stop();
+            pi = new PlaylistItem.Builder()
+                    .file(src)
+                    .title(title)
+                    .description(description)
+                    .image(poster)
+                    .build();
+
+            playerView.load(pi);
+        }
+    }
+
+    @ReactProp(name = "description")
+    public void setDescription(View view, String prop) {
+        if(description!=prop) {
+            description = prop;
+            playerView.stop();
+            pi = new PlaylistItem.Builder()
+                    .file(src)
+                    .title(title)
+                    .description(description)
+                    .image(poster)
+                    .build();
+
+            playerView.load(pi);
+        }
+    }
+
+
 }
