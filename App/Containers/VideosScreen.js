@@ -8,7 +8,6 @@ import { NavigationBar, Button } from "@shoutem/ui";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Header from "../Components/Header";
 import * as VideoActions from "../Store/actions/videos";
-import JWPlayerBridgeView from "../NativeBridges/JWPlayerBridgeNativeView";
 
 // Styles
 import styles from "./Styles/VideosStyle";
@@ -18,18 +17,20 @@ class VideosScreen extends React.PureComponent {
     super();
   }
 
-  goToVideoScreen = video => {
+  componentDidMount() {
+    this.props.videoActions.list("Uruguay");
+  }
 
-  };
-
-  renderRow({ item }) {
+  renderRow = ({ item }) => {
     return (
-      <View style={styles.row} onPress={() => this.goToVideoScreen(item)}>
+      <View style={styles.row}>
         <CardVideo
           title={item.snippet.title}
           channelName={item.snippet.channelTitle}
           description={item.snippet.description}
           thumbnail={item.snippet.thumbnails.high.url}
+          id={item.id.videoId}
+          navigation={this.props.navigation}
         />
       </View>
     );

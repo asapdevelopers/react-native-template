@@ -1,10 +1,12 @@
 import { StackNavigator } from 'react-navigation';
+import VideoDetailScreen from '../Containers/VideoDetailScreen'
 import VideosScreen from '../Containers/VideosScreen'
 import LaunchScreen from '../Containers/LaunchScreen';
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  VideoDetailScreen: { screen: VideoDetailScreen },
   VideosScreen: { screen: VideosScreen },
   LaunchScreen: { screen: LaunchScreen }
 }, {
