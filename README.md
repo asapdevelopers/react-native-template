@@ -13,7 +13,6 @@ This project is a template for React-native and includes a bridge for Android an
 * A bridge for Android and iOS to use the native [JWPlayer SDks](https://www.jwplayer.com/video-solutions/mobile-sdk/) with React native
 * Support for multiple languages using [react-native-i18n](https://github.com/AlexanderZaytsev/react-native-i18n)
 * Font-awesome icons support using [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
-* It implements app navigation using [react-navigation](https://github.com/react-navigation/react-navigation)
 
 ## How to Setup
 ```
